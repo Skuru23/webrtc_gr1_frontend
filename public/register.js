@@ -25,7 +25,7 @@ document
       email: email,
     };
 
-    fetch("http://localhost:8000/auth/re", {
+    fetch("https://web-rtc-gr1-be.onrender.com/auth/re", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -20,7 +20,7 @@ document
     const password = document.getElementById("password").value;
 
     // Gửi yêu cầu đăng nhập tới API backend bằng cách sử dụng fetch()
-    fetch("http://localhost:8000/auth/login", {
+    fetch("https://web-rtc-gr1-be.onrender.com/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

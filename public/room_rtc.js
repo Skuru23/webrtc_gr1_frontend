@@ -42,7 +42,7 @@ let isAllowed = false;
 const popup = document.getElementById("checkPass");
 const room = sessionStorage.getItem("roomdata");
 function checkAuth() {
-  fetch(`http://localhost:8000/callroom/getOne/${roomid}`, {
+  fetch(`https://web-rtc-gr1-be.onrender.com/callroom/getOne/${roomid}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -90,7 +90,7 @@ popup.addEventListener("submit", function (event) {
   event.preventDefault();
   const inputRoomPass = document.getElementById("password").value;
 
-  fetch(`http://localhost:8000/callroom/checkPass/${roomid}`, {
+  fetch(`https://web-rtc-gr1-be.onrender.com/callroom/checkPass/${roomid}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

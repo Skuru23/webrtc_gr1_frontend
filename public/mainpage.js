@@ -88,7 +88,7 @@ function LoadData() {
   function getOwnedRoomInfo() {
     console.log(accessToken);
 
-    fetch("http://localhost:8000/callroom/getAll/" + `${user._id}`, {
+    fetch("https://web-rtc-gr1-be.onrender.com/callroom/getAll/" + `${user._id}`, {
       method: "GET",
       headers: {
         token: `Bearer ${accessToken}`,
@@ -109,7 +109,7 @@ function LoadData() {
   }
 
   function getJoinedRoomInfo() {
-    fetch("http://localhost:8000/callroom/getJoined/" + `${user._id}`, {
+    fetch("https://web-rtc-gr1-be.onrender.com/callroom/getJoined/" + `${user._id}`, {
       method: "GET",
       headers: {
         token: `Bearer ${accessToken}`,
@@ -155,7 +155,7 @@ function LoadData() {
   });
 
   formPopup.addEventListener("submit", function (event) {
-    location.reload();
+    event.preventDefault();
     const roomname = document.getElementById("roomname").value;
     const participants = document
       .getElementById("participants")
@@ -180,15 +180,12 @@ function LoadData() {
         password: password,
       };
     }
-    
-
     sessionStorage.setItem("roomdata", JSON.stringify(roomdata));
-
-    fetch("http://localhost:8000/callroom/register", {
+    fetch("https://web-rtc-gr1-be.onrender.com/roomcrud/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        token: `Bearer ${accessToken}`,
+        'token': `Bearer ${accessToken}`,
       },
       body: JSON.stringify(roomdata),
     }) // Thay thế URL và endpoint phù hợp
@@ -202,12 +199,14 @@ function LoadData() {
       .then((data) => {
         // Xử lý dữ liệu và hiển thị danh sách các đối tượng
         sessionStorage.setItem("sentroomdata", data);
+        alert("Tạo thành công");
       })
       .catch((error) => {
         // Xử lý lỗi nếu có
         console.error("Đã xảy ra lỗi:", error);
         // Hiển thị thông báo lỗi cho người dùng (nếu cần)
       });
+      location.reload();
   });
 
   let selectedDate;
